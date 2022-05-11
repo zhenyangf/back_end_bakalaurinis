@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.repository.cdi.Eager;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,10 +27,4 @@ public class Insurance {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "insurance")
     private List<Event> events;
 
-    public Insurance(String title, InsuranceStatus status,  String category, List<InsuranceCategory> selectedDamage,  String address) {
-        this.title = title;
-        this.status = status;
-        this.category = category;
-        this.address = address;
-    }
 }

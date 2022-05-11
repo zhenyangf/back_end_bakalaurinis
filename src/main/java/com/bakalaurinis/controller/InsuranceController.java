@@ -33,9 +33,21 @@ public class InsuranceController {
     public InsuranceResponseDto addnewinsurance(@RequestBody InsuranceDto insurance){
         return insuranceService.create(insurance);
     }
+    @RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
+    public void showImage(@RequestParam("id") long id, HttpServletResponse response,HttpServletRequest request)
+            throws ServletException, IOException {
+
+        Event event = eventRepository.getById(id);
+        response.setContentType("image/jpg");
+        response.getOutputStream().write(event.getImage());
+
+        response.getOutputStream().close();
+
+    }
 
     @GetMapping("user/{id}/insurance")
-    public List<InsuranceDtoWithEvents> getInsuranceByUserId(@PathVariable Long id,HttpServletResponse response, HttpServletRequest request){
+    public List<InsuranceDtoWithEvents> getInsuranceByUserId(@PathVariable Long id,HttpServletResponse response, HttpServletRequest request) throws IOException {
+
 
         return insuranceService.getInsuranceByUser(id);
     }

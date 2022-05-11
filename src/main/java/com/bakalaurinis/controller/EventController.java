@@ -52,6 +52,7 @@ public class EventController {
 
     }
 
+
 //
 //    @GetMapping("/event/{id}")
 //    public Optional<EventDto>  getEvent(@PathVariable Long id){
